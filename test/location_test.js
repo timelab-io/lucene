@@ -4,13 +4,6 @@ const expect = require('chai').expect;
 
 const lucene = require('../');
 
-function isEmpty(arr) {
-  for (var i in arr) {
-    return false;
-  }
-  return true;
-}
-
 describe('queryParser', () => {
   describe('whitespace handling', () => {
     // term parsing
@@ -22,4 +15,4 @@ describe('queryParser', () => {
       expect(results['left']['termLocation'].end.offset).to.equal(8);
     });
   });
-})
+});
