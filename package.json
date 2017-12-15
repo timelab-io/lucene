@@ -1,6 +1,6 @@
 {
-  "name": "lucene",
-  "version": "1.2.0",
+  "name": "@timelab/lucene",
+  "version": "1.2.1",
   "description": "Lucene query parser and formatter for JavaScript created using PEG.js",
   "main": "lib/lucene.js",
   "files": [
@@ -8,8 +8,11 @@
   ],
   "scripts": {
     "build": "cat lib/lucene.grammar | pegjs > ./lib/queryParser.js",
-    "test": "npm run build && mocha && eslint lib test",
-    "prepublish": "npm run build && npm test",
+    "test:parser": "mocha ./test/queryParser_test.js",
+    "test:toString": "mocha ./test/toString_test.js",
+    "test:location": "mocha ./test/location_test.js",
+    "test": "npm run build && npm run test:parser && npm run test:toString && npm run test:location && eslint lib test",
+    "prepublishOnly": "npm run build && npm test",
     "precommit": "npm test"
   },
   "repository": {
@@ -40,6 +43,6 @@
     "husky": "^0.12.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "pegjs": "^0.8.0"
+    "pegjs": "^0.10.0"
   }
 }
