@@ -193,11 +193,17 @@ field_exp
 
 
             };
-
         for(var key in term)
             fieldexp[key] = term[key];
 
         return fieldexp;
+    }
+  / fieldname:fieldname
+    {
+      return {
+        field: fieldname.label,
+        fieldLocation: fieldname.location
+      }
     }
 
 fieldname
